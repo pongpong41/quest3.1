@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            th {
+                width: 100px;
+                height: 100px;
+                background-color: cyan;
+            }
+            button {
+                margin-top: 20px;
+                background-color: #4CAF50;
+                border: none;
+                color: white;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+            }
+            button:hover {background-color: #3e8e41}
+        </style>
+        <script src="index.js"></script>
+    </head>
+
+    <body>
+        <script>
+            window.onload= generate;
+        </script>
+
+        <table align="center" cellspacing="4px">
+            <tr>
+                <th id="id1" onclick="myFunc(0)"></th>
+                <th id="id2" onclick="myFunc(1)"></th>
+                <th id="id3" onclick="myFunc(2)"></th>
+                <th id="id4" onclick="myFunc(3)"></th>
+                <th id="id5" onclick="myFunc(4)"></th>
+            </tr>
+            <tr>
+                <th id="id6" onclick="myFunc(5)"></th>
+                <th id="id7" onclick="myFunc(6)"></th>
+                <th id="id8" onclick="myFunc(7)"></th>
+                <th id="id9" onclick="myFunc(8)"></th>
+                <th id="id10" onclick="myFunc(9)"></th>
+            </tr>
+            <tr>
+                <th id="id11" onclick="myFunc(10)"></th>
+                <th id="id12" onclick="myFunc(11)"></th>
+                <th id="id13" onclick="myFunc(12)"></th>
+                <th id="id14" onclick="myFunc(13)"></th>
+                <th id="id15" onclick="myFunc(14)"></th>
+            </tr>
+            <tr>
+                <th id="id16" onclick="myFunc(15)"></th>
+                <th id="id17" onclick="myFunc(16)"></th>
+                <th id="id18" onclick="myFunc(17)"></th>
+                <th id="id19" onclick="myFunc(18)"></th>
+                <th id="id20" onclick="myFunc(19)"></th>
+            </tr>
+            <tr>
+                <th id="id21" onclick="myFunc(20)"></th>
+                <th id="id22" onclick="myFunc(21)"></th>
+                <th id="id23" onclick="myFunc(22)"></th>
+                <th id="id24" onclick="myFunc(23)"></th>
+                <th id="id25" onclick="myFunc(24)"></th>
+            </tr>
+        </table>
+
+        <div style="text-align: center;">
+            <button id="newGame" onclick="generate()">New Game</button>
+            <p id="ans" style="visibility: hidden;">ans</p>
+        </div>
+    </body>
+</html>
