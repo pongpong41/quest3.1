@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="response.js"></script>
+    </head>
+    <body>
+
+        name: <input type="text" id="name" value="Penpicha"><br>
+        surname: <input type="text" id="surname" value="Sangsa-nga"><br>
+        nickname: <input type="text" id="nickname" value="Baipo"><br>
+        gender: <input type="text" id="gender" value="female"><br>
+        image: <input type="text" id="imageLink" value="https://scontent.fbkk1-1.fna.fbcdn.net/v/t1.0-9/14666144_1210183849042752_7533309617677394025_n.jpg?_nc_fx=fbkk1-4&_nc_cat=0&oh=0b8b0fb43c762803ad5de2a418690b0f&oe=5BCF04C1"><br>
+
+        <button id="adduser" onclick="myfunc()">summit</button>
+
+        <script>
+            function myfunc() {
+                var name = document.getElementById("name").value;
+                var sur = document.getElementById("surname").value;
+                var nick = document.getElementById("nickname").value;
+                var gend = document.getElementById("gender").value;
+                var img = document.getElementById("imageLink").value;
+                addUser(name, sur, nick, gend, img);
+            }
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="stylesheet.css"/>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="response.js"></script>
+        <title>users/edit</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+
+        <div class="top">Quest #3</div>
+        <div class="container">
+            <h1 style="margin: 0 0 10px 0;">Edit</h1>
+            <div class="box">
+                ID: <label id="userID"></label><br>
+                <ul>
+                    <li>Name: <input type="text" id="name"></li>
+                    <li>Surname: <input type="text" id="surname"></li>
+                    <li>Nickname: <input type="text" id="nickname"></li>
+                    <li>Gender: <input type="text" id="gender"></li>
+                    <li>Image: <input type="text" id="imageLink"></li>
+                </ul>
+                <button id="edituser" class="butt" onclick="edit()">summit</button>
+                <label id="result"></label>
+            </div>
+        </div>  
+
+        <script>
+            function edit() {
+                var userId = document.getElementById("userID").innerHTML;
+                var name = document.getElementById("name").value;
+                var sur = document.getElementById("surname").value;
+                var nick = document.getElementById("nickname").value;
+                var gend = document.getElementById("gender").value;
+                var img = document.getElementById("imageLink").value;
+                editUser(userId, name, sur, nick, gend, img);
+                //window.open('index.html','_self');
+            }
+        </script>
+
+    </body>
+</html>
