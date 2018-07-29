@@ -70,7 +70,14 @@ function addUser(name, sur, nick, gend, img) {
     })
         .then(function (response) {
         console.log(response);
-        document.getElementById("result").innerHTML = "Complete";
+        if (response.data.status == 1) {
+            document.getElementById("result").innerHTML = "Complete";
+            document.getElementById("result").style.color = "green";
+        } else {
+            var errMsg = response.data.error;
+            document.getElementById("result").innerHTML = errMsg;
+            document.getElementById("result").style.color = "red";
+        }
     })
         .catch(function (error) {
         console.log(error);
@@ -88,7 +95,14 @@ function editUser(userID, name, sur, nick, gend, img) {
     })
         .then(function (response) {
         console.log(response);
-        document.getElementById("result").innerHTML = "Complete";
+        if (response.data.status == 1) {
+            document.getElementById("result").innerHTML = "Complete";
+            document.getElementById("result").style.color = "green";
+        } else {
+            var errMsg = response.data.error;
+            document.getElementById("result").innerHTML = errMsg;
+            document.getElementById("result").style.color = "red";
+        }
     })
         .catch(function (error) {
         console.log(error);
