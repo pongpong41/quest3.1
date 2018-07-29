@@ -15,8 +15,9 @@ function createButtonEdit(userID, name, sur, nick, gend, img) {
     var butt = document.createElement('button');
     butt.innerHTML = 'Edit' + '<span style="margin-left:2px" class="icon ion-backspace"></span>'
     butt.onclick = function () {
-        openEditPage(userID, name, sur, nick, gend, img);
+        showEditArea(userID, name, sur, nick, gend, img);
     }
+    butt.classList.add('editButt');
     buttCell.appendChild(butt);
     return buttCell;
 }
@@ -32,26 +33,33 @@ function createImage(imgLink) {
 
 async function getUser() {
     try {
+
         const response = await axios.get('https://sb-pong-web-quest.herokuapp.com/users/');
         console.log(response);
-        var allUsers = response.data.data;
+        if (response.data.status == 1) {
+            var allUsers = response.data.data;
 
-        var tab = document.getElementById("table-body");
-        for (var i = 0; i < allUsers.length; i++) {
-            var user = allUsers[i];
-            var cols = [user.id, user.name, user.surname, user.nickname, user.gender];
-            var row = document.createElement('tr');
-            for (var j = 0; j < cols.length; j++) {
-                var cell = document.createElement('td');
-                var cellText = document.createTextNode(cols[j]);
-                cell.appendChild(cellText);
-                row.appendChild(cell);
+            var tab = document.getElementById("table-body");
+            for (var i = 0; i < allUsers.length; i++) {
+                var user = allUsers[i];
+                var cols = [user.id, user.name, user.surname, user.nickname, user.gender];
+                var row = document.createElement('tr');
+                for (var j = 0; j < cols.length; j++) {
+                    var cell = document.createElement('td');
+                    var cellText = document.createTextNode(cols[j]);
+                    cell.appendChild(cellText);
+                    row.appendChild(cell);
+                }
+                row.appendChild(createImage(user.image));
+                row.appendChild(createButtonEdit(user.id, user.name, user.surname, user.nickname, user.gender, user.image));
+                row.appendChild(createButtonRemove(user.id));
+
+                tab.appendChild(row);
             }
-            row.appendChild(createImage(user.image));
-            row.appendChild(createButtonEdit(user.id, user.name, user.surname, user.nickname, user.gender, user.image));
-            row.appendChild(createButtonRemove(user.id));
-
-            tab.appendChild(row);
+            document.getElementById("loading").style.display = "none";
+            
+        } else {
+            document.write("request is error");
         }
 
     } catch (error) {
@@ -71,9 +79,13 @@ function addUser(name, sur, nick, gend, img) {
         .then(function (response) {
         console.log(response);
         if (response.data.status == 1) {
+            document.getElementById("result").style.display = "inline-flex";
+            document.getElementById("load1").style.display = "none";
             document.getElementById("result").innerHTML = "Complete";
             document.getElementById("result").style.color = "green";
         } else {
+            document.getElementById("result").style.display = "inline-flex";
+            document.getElementById("load1").style.display = "none";
             var errMsg = response.data.error;
             document.getElementById("result").innerHTML = errMsg;
             document.getElementById("result").style.color = "red";
@@ -96,9 +108,12 @@ function editUser(userID, name, sur, nick, gend, img) {
         .then(function (response) {
         console.log(response);
         if (response.data.status == 1) {
+            document.getElementById("load1").style.display = "none";
             document.getElementById("result").innerHTML = "Complete";
             document.getElementById("result").style.color = "green";
+            location.reload();
         } else {
+            document.getElementById("load1").style.display = "none";
             var errMsg = response.data.error;
             document.getElementById("result").innerHTML = errMsg;
             document.getElementById("result").style.color = "red";
@@ -127,15 +142,14 @@ function openAddPage() {
     win.focus();
 }
 
-function openEditPage(userID, name, sur, nick, gend, img) {
-    var win = window.open("edituser.html", '_blank');
-    win.focus();
-    win.onload = function () {
-        win.document.getElementById("userID").innerHTML = userID;
-        win.document.getElementById("name").value = name;
-        win.document.getElementById("surname").value = sur;
-        win.document.getElementById("nickname").value = nick;
-        win.document.getElementById("gender").value = gend;
-        win.document.getElementById("imageLink").value = img;
-    };
+function showEditArea(userID, name, sur, nick, gend, img) {
+    var x = document.getElementById("editArea");
+    x.style.display = "block";
+    document.getElementById("userID").innerHTML = userID;
+    document.getElementById("name").value = name;
+    document.getElementById("surname").value = sur;
+    document.getElementById("nickname").value = nick;
+    document.getElementById("gender").value = gend;
+    document.getElementById("imageLink").value = img;
+    x.scrollIntoView();
 }

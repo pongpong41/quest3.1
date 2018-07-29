@@ -21,10 +21,13 @@
                 </ul>
                 <button id="adduser" class="butt" onclick="add()">summit</button>
                 <label id="result"></label>
+                <div id="load1" class="loader1"></div>
             </div>
         </div>
         <script>
             function add() {
+                document.getElementById("result").style.display = "none";
+                document.getElementById("load1").style.display = "inline-block";
                 var name = document.getElementById("name").value;
                 var sur = document.getElementById("surname").value;
                 var nick = document.getElementById("nickname").value;

@@ -10,10 +10,22 @@
     <body>
         <script>
             window.onload= getUser;
+
+            function edit() {
+                document.getElementById("load1").style.display = "inline-block";
+                var userId = document.getElementById("userID").innerHTML;
+                var name = document.getElementById("name").value;
+                var sur = document.getElementById("surname").value;
+                var nick = document.getElementById("nickname").value;
+                var gend = document.getElementById("gender").value;
+                var img = document.getElementById("imageLink").value;
+                editUser(userId, name, sur, nick, gend, img);
+            }
         </script>
 
         <div class="top">Quest #3</div>
         <div class="container">
+
             <table>
                 <tbody id="table-body">
                     <tr class="topTable">
@@ -25,8 +37,25 @@
                     </tr>
                 </tbody>
             </table>
+            <div id="loading" class="loaderTable"></div>
             <button id="adduser" class="butt" onclick="openAddPage()">Add</button>
-        </div>
-        
+            
+            <div id="editArea" style="display: none;">
+                <div class="box">
+                    <label style="font-size: 30px; font-weight: bold;">Edit ID: <span id="userID" ></span></label><br>
+                    <ul>
+                        <li>Name: <input type="text" id="name"></li>
+                        <li>Surname: <input type="text" id="surname"></li>
+                        <li>Nickname: <input type="text" id="nickname"></li>
+                        <li>Gender: <input type="text" id="gender"></li>
+                        <li>Image: <input type="text" id="imageLink"></li>
+                    </ul>
+                    <button id="edituser" class="butt" onclick="edit()">summit</button>
+                    <label id="result"></label>
+                    <div id="load1" class="loader1"></div>
+                </div>
+            </div>
+        </div> 
+
     </body>
 </html>

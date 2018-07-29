@@ -35,6 +35,34 @@ input[type=text], select {
     box-sizing: border-box;
 }
 
+.loaderTable {
+    margin: auto;
+    border: 10px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 10px solid #3498db;
+    width: 80px;
+    height: 80px;
+    animation: spin 2s linear infinite;
+}
+
+.loader1 {
+    margin: 0;
+    padding: 0;
+    display: none;
+    vertical-align: middle;
+    border: 5px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 5px solid dimgrey;
+    width: 25px;
+    height: 25px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 .top{
     padding: 12px 12px 12px 30px;
     font-size: 20px;
@@ -58,8 +86,20 @@ input[type=text], select {
     font-size: 14px;
 }
 
+.editButt {
+    background-color: gray;
+    border: none;
+    color: white;
+    padding: 8px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+}
+
 .butt{
-    margin-right: 10px;
+    display: flex;
+    margin-right: 20px;
     background-color: #4CAF50;
     border: none;
     color: white;
@@ -83,6 +123,7 @@ button:hover {background-color: dimgrey}
     list-style: none;
     padding: 0;
     margin: auto;
+    margin-top: 40px;
     padding: 20px;
     width: 100%;
     min-width: 500px;
